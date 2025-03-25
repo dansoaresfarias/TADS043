@@ -1,3 +1,5 @@
+-- SQL: DDL-CREATE
+
 create schema cristal;
 
 use cristal;
@@ -43,5 +45,31 @@ create table dependente (
 );
 
 desc dependente;
+
+-- SQL: DDL-DROP
+
+drop table funcionario;
+
+drop table dependente;
+
+drop table endereco;
+
+-- SQL: DDL-ALTER
+alter table departamento
+	add column descricao varchar(150) null;
+    
+alter table departamento
+	change column descricao sobre varchar(155) null,
+    add column sala varchar(15) null after `local`;
+
+alter table departamento
+	drop column sala, 
+    drop column sobre;
+
+desc departamento;
+
+
+
+
 
 
