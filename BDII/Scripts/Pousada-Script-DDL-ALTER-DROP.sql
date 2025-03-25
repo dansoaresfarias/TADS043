@@ -67,9 +67,3 @@ alter table departamento
     drop column sobre;
 
 desc departamento;
-
-
-
-
-
-
