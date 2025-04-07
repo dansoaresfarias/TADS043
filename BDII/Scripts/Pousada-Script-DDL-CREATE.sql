@@ -36,7 +36,7 @@ ENGINE = InnoDB;
 -- Table `TropicanaTADS043`.`Departamento`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `TropicanaTADS043`.`Departamento` (
-  `idDepartamento` INT NOT NULL,
+  `idDepartamento` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(25) NOT NULL,
   `local` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
@@ -144,7 +144,7 @@ ENGINE = InnoDB;
 -- Table `TropicanaTADS043`.`RegPonto`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `TropicanaTADS043`.`RegPonto` (
-  `idRegPonto` INT NOT NULL,
+  `idRegPonto` INT NOT NULL AUTO_INCREMENT,
   `tipoES` VARCHAR(10) NOT NULL,
   `dataHora` DATETIME NOT NULL,
   `Funcionario_cpf` VARCHAR(14) NOT NULL,
@@ -162,7 +162,7 @@ ENGINE = InnoDB;
 -- Table `TropicanaTADS043`.`Ocorrencia`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `TropicanaTADS043`.`Ocorrencia` (
-  `idOcorrencia` INT NOT NULL,
+  `idOcorrencia` INT NOT NULL AUTO_INCREMENT,
   `dataHoraIni` DATETIME NOT NULL,
   `dataHoraFim` DATETIME NOT NULL,
   `tipo` VARCHAR(25) NOT NULL,
@@ -196,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `TropicanaTADS043`.`Trabalhar` (
   `Departamento_idDepartamento` INT NOT NULL,
   `Cargo_cbo` INT NOT NULL,
   `dataInicio` DATETIME NOT NULL,
-  `dataFim` DATETIME NOT NULL,
+  `dataFim` DATETIME NULL,
   PRIMARY KEY (`Funcionario_cpf`, `Departamento_idDepartamento`, `Cargo_cbo`),
   INDEX `fk_Funcionario_has_Departamento_Departamento1_idx` (`Departamento_idDepartamento` ASC) VISIBLE,
   INDEX `fk_Funcionario_has_Departamento_Funcionario1_idx` (`Funcionario_cpf` ASC) VISIBLE,
@@ -236,7 +236,7 @@ ENGINE = InnoDB;
 -- Table `TropicanaTADS043`.`Reserva`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `TropicanaTADS043`.`Reserva` (
-  `idReserva` INT NOT NULL,
+  `idReserva` INT NOT NULL AUTO_INCREMENT,
   `qtdHospedes` INT NOT NULL,
   `status` VARCHAR(15) NOT NULL,
   `dataEntrada` DATETIME NOT NULL,
@@ -263,7 +263,7 @@ ENGINE = InnoDB;
 -- Table `TropicanaTADS043`.`UH`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `TropicanaTADS043`.`UH` (
-  `idUH` INT NOT NULL,
+  `idUH` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `valorDiaria` DECIMAL(6,2) NOT NULL,
   `local` VARCHAR(45) NOT NULL,
