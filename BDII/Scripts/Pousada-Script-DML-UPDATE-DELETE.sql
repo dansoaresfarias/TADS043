@@ -1,4 +1,4 @@
--- SQL: DML - UPDATE e DELETE
+-- SQL: DML - DELETE
 
 update funcionario
 	set salario = 3600
@@ -26,5 +26,37 @@ update funcionario
 	set salario = salario * 1.15
 		where dataNasc <= '1985-04-07';
 
+update funcionario
+	set salario = salario * 1.2
+		where cpf in (select funcionario_cpf from trabalhar
+	where dataInicio <= '2020-04-07');
+
+select funcionario_cpf from trabalhar
+	where dataInicio <= '2020-04-07';
+
+-- SQL: DML - DELETE    
+delete from trabalhar
+	where funcionario_cpf = "126.621.666-11";
+    
+delete from funcionario
+	where cpf = "126.621.666-11";
+
+delete from trabalhar; -- truncate trabalhar;
+
+delete from reserva;
+
+delete from departamento;
+
+delete from funcionario
+	where cpf in (select funcionario_cpf 
+		from endereco where cidade = "Recife");
+
+-- SQL: DTL
+start transaction;        
+delete from funcionario
+	where cpf in (select funcionario_cpf 
+		from endereco where cidade like "Jabo%");
+commit;
+rollback;
 
 
