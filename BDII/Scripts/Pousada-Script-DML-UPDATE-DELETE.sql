@@ -14,4 +14,17 @@ update funcionario
         
 SET SQL_SAFE_UPDATES = 0;
 
+-- salario = salario * 1 - (salario * 0.2) ==> salario * (1 - 0.2)
+update funcionario
+	set salario = salario * 0.8;
+
+update funcionario
+	set salario = salario * 1.15
+		where dataNasc <= '1985-01-01';
+
+update funcionario
+	set salario = salario * 1.15
+		where dataNasc <= '1985-04-07';
+
+
 
