@@ -1,0 +1,48 @@
+:root {
+    --corBranca: #0004ff;
+    --corPreta: #010707;
+    --cor1: #FDFBEE;
+    --cor2: #57B4BA;
+    --cor3: #015551;
+    --cor4: #FE4F2D;
+}
+
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0 5%;
+    color: var(--corPreta);
+    background: var(--cor3);
+    background: linear-gradient(0deg, rgba(1, 85, 81, 1) 0%, rgba(87, 180, 186, 1) 11%, rgba(253, 251, 238, 1) 100%);
+}
+
+table {
+    background-image: url(https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/09/checkerboard-gradient.jpg);
+    background-repeat: no-repeat;
+    color: var(--cor3);
+}
+
+footer {
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+    font-weight: bold;
+    color: var(--cor1);
+}
+
+h1 {
+    font-size: 2.5em;
+    color: var(--cor3);
+}
+
+h2.cargo {
+    font-size: 1.7em;
+    color: var(--cor3);
+}
+
+h2 {
+    font-size: 1.7em;
+    color: var(--cor4);
+}
+
+.centralizar {
+    text-align: center;
+}
