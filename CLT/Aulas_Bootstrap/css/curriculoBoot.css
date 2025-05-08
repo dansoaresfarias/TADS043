@@ -26,6 +26,13 @@ footer {
     padding: 0.5em;
 }
 
+th {
+    background-color: var(--cor3) !important;
+    color: var(--cor1) !important;
+    font-weight: bold !important;
+    text-align: center !important;
+}
+
 p.justificado {
     text-align: justify;
 }
