@@ -202,6 +202,59 @@
             </div>
         </div>
         <div class="card hrBcg my-2"></div>
+        <div id="contato" class="container">
+            <h2>Contato</h2>
+            <div class="container">
+                <p class="justificado">Para entrar em contato, preencha o formulário abaixo e clique em enviar.
+                </p>
+                <form action="" class="row g-3">
+                    <div class="col-md-4">
+                        <label for="inputNome" class="form-label">Nome*</label>
+                        <input type="text" class="form-control" id="inputNome" placeholder="Digite seu nome" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputEmail" class="form-label">E-mail*</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Digite seu e-mail"
+                            required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputTelefone" class="form-label">Telefone</label>
+                        <input type="telefone" class="form-control" id="inputTelefone"
+                            placeholder="Digite seu telefone">
+                    </div>
+                    <div class="col-md-4">
+                        <span>Preferência de Conversa</span><br>
+                        <input class="form-radio" type="radio" name="preferencia" id="preferencia1" value="presencial" checked>
+                        <label for="preferencia1">Presencial</label>
+                        <input type="radio" name="preferencia" id="preferencia2" value="remoto">
+                        <label for="preferencia2">Remoto</label>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="plataforma">Caso remoto, escolha uma plataforma:</label> <br>
+                        <select class="form-select" id="plataforma" name="plataforma">
+                            <option value="googlemeet">Google Meet</option>
+                            <option value="teams">Teams</option>                            
+                            <option value="telegram">Telegram</option>
+                            <option value="whatsapp" selected>WhatsApp</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="horario">Informe uma Data/Hora Desejada:</label> <br>
+                        <input type="datetime-local" class="form-control" name="horario" id="horario">
+                    </div>
+                    <div class="col-md-12">
+                        <label for="inputMensagem" class="form-label">Mensagem</label>
+                        <textarea class="form-control" id="inputMensagem" rows="3"
+                            placeholder="Conta tua história..."></textarea>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="reset" class="btn formulario">Cancelar</button>
+                        <button type="submit" class="btn formulario">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card hrBcg my-2"></div>
         <div id="endereco" class="container">
             <h2>Endereço</h2>
             <div class="container text-center">

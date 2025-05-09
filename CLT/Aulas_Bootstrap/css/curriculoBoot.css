@@ -54,6 +54,22 @@ a.menuDanilo:hover {
     color: var(--corBranca);
 }
 
+button.formulario {
+    background-color: var(--cor3);
+    color: var(--cor1);
+    font-weight: bold;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button.formulario:hover {
+    background-color: var(--cor5);
+    color: var(--corBranca);
+}
+
 .hrBcg {
     background-color: var(--cor4);
 }
