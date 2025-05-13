@@ -126,3 +126,58 @@ select upper(f.nome) as "Funcionário", f.cpf "CPF",
         left join telefone t on t.Funcionario_cpf = f.cpf
 			group by f.cpf
 				order by f.nome;
+
+select func.cpf "CPF", func.nome "Funcionário", 
+	fer.periodoAqt "Ano Referente",
+    date_format(fer.dataInicio, '%d/%m/%Y') "Data Início",
+    date_format(fer.dataFim, '%d/%m/%Y') "Data Fim",
+    case when (timestampdiff(day, fer.dataInicio, fer.dataFim) + 1) > 30
+		then 30 
+        else timestampdiff(day, fer.dataInicio, fer.dataFim) + 1 
+	end "Quantidade de Dias",
+    concat('R$ ', format(fer.valor, 2, 'de_DE')) "Valor a Receber",
+    case fer.addDecimal
+		when 1 then "Sim"
+        else "Não"
+	end "Adiantamento do Décimo"
+    from funcionario func
+		inner join ferias fer on fer.Funcionario_cpf = func.cpf
+			order by func.nome;
+
+update ferias fer
+	inner join vFerias on fer.idFerias = vFerias.idFerias
+	set fer.dataFim = adddate(fer.dataFim, interval -1 day)
+		where vFerias.qtdDias > 30;
+
+select adddate(dataFim, interval -1 day), dataFim from ferias;
+
+select idFerias 
+	from vFerias 
+		where qtdDias > 30;
+
+select idFerias, timestampdiff(day, dataInicio, dataFim) + 1 "qtdDias"
+	from ferias;
+
+create view vFerias as
+	select idFerias, timestampdiff(day, dataInicio, dataFim) + 1 "qtdDias"
+		from ferias;
+
+create view vRelFerias as
+	select func.cpf "CPF", func.nome "Funcionário", 
+		fer.periodoAqt "Ano Referente",
+		date_format(fer.dataInicio, '%d/%m/%Y') "Data Início",
+		date_format(fer.dataFim, '%d/%m/%Y') "Data Fim",
+		case when (timestampdiff(day, fer.dataInicio, fer.dataFim) + 1) > 30
+			then 30 
+			else timestampdiff(day, fer.dataInicio, fer.dataFim) + 1 
+		end "Quantidade de Dias",
+		concat('R$ ', format(fer.valor, 2, 'de_DE')) "Valor a Receber",
+		case fer.addDecimal
+			when 1 then "Sim"
+			else "Não"
+		end "Adiantamento do Décimo"
+		from funcionario func
+			inner join ferias fer on fer.Funcionario_cpf = func.cpf
+				order by func.nome;
+
+select * from vrelferias;
