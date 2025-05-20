@@ -181,3 +181,38 @@ create view vRelFerias as
 				order by func.nome;
 
 select * from vrelferias;
+
+delimiter $$
+create function calcValeTransp(pCPF varchar(14))
+	returns decimal(5,2) deterministic
+    begin
+		declare valeTransp decimal(5,2) default 0.0;
+        declare tempSal decimal(7,2);
+        declare tempCid varchar(45);
+        select salario into tempSal from funcionario where cpf = pCPF;
+        select cidade into tempCid from endereco where Funcionario_cpf = pCPF;
+        if tempCid like 'Recife' 
+			then set valeTransp = 22 * 2 * 4.3;
+		else set valeTransp = 22 * 2 * 5.6;
+        end if;
+        set valeTransp = valeTransp - tempSal * 0.06;
+        if valeTransp > 0.0 
+			then return valeTransp;
+		else return 0.0;
+        end if;
+    end $$ 
+delimiter ;
+
+
+select salario into @tempSal from funcionario where cpf = '074.740.774-00';
+select @tempSal;
+
+select nome "Funcionário", cpf "CPF",
+	concat("R$ ", format(salario, 2, 'de_DE')) "Salário Bruto",
+    concat("R$ ", format(calcValeTransp(cpf), 2, 'de_DE')) "Vale Transporte",
+    concat("R$ ", format(salario + calcValeTransp(cpf), 2, 'de_DE')) "Salário Líquido"
+    from funcionario
+		order by nome;
+
+
+
