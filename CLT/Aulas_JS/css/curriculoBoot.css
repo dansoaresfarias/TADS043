@@ -1,0 +1,118 @@
+:root {
+    --corBranca: #ffffff;
+    --corPreta: #010707;
+    --cor1: #FDFBEE;
+    --cor2: #57B4BA;
+    --cor3: #015551;
+    --cor4: #FE4F2D;
+    --cor5: #0d302f;
+}
+
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: var(--cor1);
+    font-size: 1.1em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--cor5);
+}  
+
+footer {
+    text-align: center;
+    background-color: var(--cor3);
+    color: var(--cor1);
+    font-weight: bold;
+    padding: 0.5em;
+}
+
+th {
+    background-color: var(--cor3) !important;
+    color: var(--cor1) !important;
+    font-weight: bold !important;
+    text-align: center !important;
+}
+
+p.justificado {
+    text-align: justify;
+}
+
+a.menuDanilo {
+    color: var(--cor1);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: var(--cor3);
+}
+
+
+a.menuDanilo:hover {
+    background-color: var(--cor5);
+    color: var(--corBranca);
+}
+
+button.formulario {
+    background-color: var(--cor3);
+    color: var(--cor1);
+    font-weight: bold;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button.formulario:hover {
+    background-color: var(--cor5);
+    color: var(--corBranca);
+}
+
+.hrBcg {
+    background-color: var(--cor4);
+}
+
+.bordaSubTituloTep {
+    border-left: 3px solid var(--cor4);
+    padding: 10px;
+}
+
+.tab{
+    margin-left: 1em;
+}
+
+#menuDanilo {
+    background-color: var(--cor3);
+    padding: 1em;
+    text-align: center;
+}
+
+#sobre {
+    scroll-margin-top: 85px;
+}
+
+#sobre {
+    scroll-margin-top: 85px;
+}
+
+#formacao {
+    scroll-margin-top: 85px;
+}
+
+#experiencia {
+    scroll-margin-top: 85px;
+}
+
+#habilidades {
+    scroll-margin-top: 85px;
+}
+
+#contato {
+    scroll-margin-top: 85px;
+}
+
+#endereco {
+    scroll-margin-top: 85px;
+}
