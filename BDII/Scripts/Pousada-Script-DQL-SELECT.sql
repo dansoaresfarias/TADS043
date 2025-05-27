@@ -203,14 +203,76 @@ create function calcValeTransp(pCPF varchar(14))
     end $$ 
 delimiter ;
 
-
 select salario into @tempSal from funcionario where cpf = '074.740.774-00';
 select @tempSal;
+
+	select count(cpf)  from dependente
+			where Funcionario_cpf = "101.112.223-44" and
+				parentesco like "Filh%" and
+                timestampdiff(year, dataNasc, now()) <= 6;
+
+delimiter $$
+create function calcAuxCreche(pCPF varchar(14))
+	returns decimal(6,2) deterministic
+    begin
+		declare auxCreche decimal(6,2) default 0.0;
+        declare qtdFilho int;
+        select count(cpf) into qtdFilho from dependente
+			where Funcionario_cpf = pCPF and
+				parentesco like "Filh%" and
+                timestampdiff(year, dataNasc, now()) <= 6;
+        set auxCreche = 250 * qtdFilho;
+        return auxCreche;
+    end $$
+delimiter ;
+
+delimiter $$
+create function calcINSS(pSalario decimal(7,2))
+	returns decimal(6,2) deterministic
+    begin
+		declare INSS decimal(6,2);
+        if pSalario <= 1518 
+			then set INSS = pSalario * 0.075;
+		elseif pSalario between 1518.01 and 2793.88
+			then set INSS = pSalario * 0.09;
+		elseif pSalario between 2793.89 and 4190.83
+			then set INSS = pSalario * 0.12;
+		elseif pSalario between 4190.84 and 8157.41
+			then set INSS = pSalario * 0.14;
+		else set INSS = 8157.41 * 0.14;
+        end if;
+        return INSS;
+    end $$
+delimiter ;
+
+delimiter $$
+create function calcIRRF(pSalario decimal(7,2))
+	returns decimal(6,2) deterministic
+    begin
+		declare IRRF decimal(6,2);
+        if pSalario <= 2259.20 
+			then set IRRF = 0.0;
+		elseif pSalario between 2259.21 and 2826.65
+			then set IRRF = pSalario * 0.075;
+		elseif pSalario between 2826.66 and 3751.05
+			then set IRRF = pSalario * 0.15;
+		elseif pSalario between 3751.06 and 4664.68
+			then set IRRF = pSalario * 0.225;
+		else set IRRF = pSalario * 0.275;
+        end if;
+        return IRRF;
+    end $$
+delimiter ;
 
 select nome "Funcionário", cpf "CPF",
 	concat("R$ ", format(salario, 2, 'de_DE')) "Salário Bruto",
     concat("R$ ", format(calcValeTransp(cpf), 2, 'de_DE')) "Vale Transporte",
-    concat("R$ ", format(salario + calcValeTransp(cpf), 2, 'de_DE')) "Salário Líquido"
+    concat("R$ ", format(22 * 18.5, 2, 'de_DE')) "Vale Alimentação",
+    concat("R$ ", format(calcAuxCreche(cpf), 2, 'de_DE'))"Auxílio Creche",
+    concat("R$ -", format(calcINSS(salario), 2, 'de_DE'))"INSS",
+    concat("R$ -", format(calcIRRF(salario), 2, 'de_DE'))"IRRF",
+    concat("R$ ", format(salario + calcValeTransp(cpf) + 22 * 18.5 + 
+    calcAuxCreche(cpf) - calcINSS(salario) - calcIRRF(salario), 2, 'de_DE')) "Salário Líquido"
     from funcionario
 		order by nome;
 
