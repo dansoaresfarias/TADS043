@@ -276,5 +276,50 @@ select nome "Funcionário", cpf "CPF",
     from funcionario
 		order by nome;
 
+delimiter $$
+create procedure cadFuncionario(in pcpf varchar(14),
+								in pnome varchar(80),
+								in pnomeSocial varchar(45),
+								in pgenero char(1),
+								in pdataNasc date,
+								in pemail varchar(45),
+								in psalario decimal(7,2),
+                                in pnumTel1 varchar(15),
+                                in pnumTel2 varchar(15),
+                                in pnumTel3 varchar(15),
+                                in pUF char(2),
+								in pcidade varchar(45),
+								in pbairro varchar(45),
+								in prua varchar(45),
+								in pnumero int,
+								in pcomp varchar(45),
+								in pcep varchar(9))
+	begin
+		insert into funcionario
+			value (pcpf, pnome, pnomeSocial, pgenero, pdataNasc, pemail, 
+				psalario, 1, 0.0);
+		insert into telefone (numero, Funcionario_cpf)
+			value (pnumTel1, pcpf);
+		if pnumTel2 is not null
+			then insert into telefone (numero, Funcionario_cpf)
+					value (pnumTel2, pcpf);
+		end if;
+        if pnumTel3 is not null
+			then insert into telefone (numero, Funcionario_cpf)
+					value (pnumTel3, pcpf);
+		end if;
+        insert into endereco
+			value (pcpf, pUF, pcidade, pbairro, prua, pnumero, pcomp, pcep);
+    end $$
+delimiter ;
 
+call cadFuncionario("709.907.770-99", "Maria Clara de Melo", "Clara", 'F',
+	'2002-03-20', "clara.melo@gmail.com", 15000, "(81)98679-8679", 
+    "(81)99774-5742", null, 'PE', "Recife", "Pina", "Rua 12 de Julho", 123,
+    "Ap 203", '50180-980');
 
+select * from funcionario;
+
+select * from telefone;
+
+select * from endereco;
