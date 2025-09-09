@@ -323,3 +323,64 @@ select * from funcionario;
 select * from telefone;
 
 select * from endereco;
+
+delimiter $$
+create trigger tgrAftInsertHospedagem after insert 
+	on hospedagem
+    for each row
+		begin
+			update reserva
+				set status = "Checked-in"
+					where idReserva = new.Reserva_idReserva;
+        end $$
+delimiter ;
+
+delete from hospedagem
+	where Reserva_idReserva = 79;
+
+update reserva
+	set status = "Cancelada"
+		where idReserva = 79;
+
+insert into hospedagem value (79, 0.0, now(), null);
+
+delimiter $$
+create trigger tgrAftDeleteHospedagem after delete 
+	on hospedagem
+    for each row
+		begin
+			update reserva
+				set status = "Cancelada"
+					where idReserva = old.Reserva_idReserva;
+        end $$
+delimiter ;
+
+delimiter $$
+create trigger tgrBfrUpdateHospedagem before update
+	on hospedagem
+    for each row
+		begin
+			if new.checkOut is not null
+				then 
+					begin
+						declare qtdDias int;
+                        declare VD decimal(6,2) default 0.0;
+                        select timestampdiff(day, new.checkIn, new.checkOut)
+							into qtdDias;
+						select valorDiaria into VD from uh
+							where idUH = (select UH_idUH from reserva_uh where Reserva_idReserva = new.Reserva_idReserva);
+                        set new.valorTotal = VD * (qtdDias + 1);
+						update reserva
+							set status = "Checked-out"
+								where idReserva = new.Reserva_idReserva;
+                    end;
+			end if;
+		end $$
+delimiter ;
+
+drop trigger tgrBfrUpdateHospedagem;
+
+update hospedagem
+	set checkOut = '2025-06-13 14:00:00'
+		where Reserva_idReserva = 79;
+
