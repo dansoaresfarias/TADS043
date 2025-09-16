@@ -3,12 +3,11 @@ package Model;
 public class Endereco {
 
 	private String uf;
-	private String cidade;
+	public String cidade;
 	private String bairro, rua, comp, cep;
 	private int numero;
 
 	public Endereco(String uf, String cidade, String bairro, String rua, String comp, String cep, int numero) {
-		super();
 		this.uf = uf;
 		this.cidade = cidade;
 		this.bairro = bairro;
@@ -76,11 +75,8 @@ public class Endereco {
 
 	@Override
 	public String toString() {
-		return "Endereco: \nUF= " + uf + "\nCidade= " + cidade + 
-				"\nBairro= " + bairro + "\nRua= " + rua + 
-				"\nNumero= " + numero +
-				"\nComplemento= " + comp
-				+ "\nCEP= " + cep ;
+		return rua + ", Nº " + numero + ", " + comp + ", " + bairro
+				+ ", " + cidade + "-" + uf + ", " + cep ;
 	}
 
 }
