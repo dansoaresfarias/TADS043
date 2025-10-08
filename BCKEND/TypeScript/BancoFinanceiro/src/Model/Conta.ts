@@ -78,9 +78,50 @@ export class Conta {
     }
 
     //transferir
+    public transferir(valor: number, contaDestino: Conta): boolean {
+        if (valor <= 0 || valor > this.saldo || !this.status) {
+            console.log("Valor inválido, saldo insuficiente ou conta inativa.");
+            return false;
+        }else {     
+            this.saldo -= valor;
+            contaDestino.saldo += valor;
+            const transacaoSaida = new Transacao(TipoTransacao.TRANSFERENCIA, valor, 
+                "-", contaDestino.cliente);
+            this.transacoes.push(transacaoSaida);
+            const transacaoEntrada = new Transacao(TipoTransacao.TRANSFERENCIA, valor, 
+                "+", this.cliente);
+            contaDestino.transacoes.push(transacaoEntrada);
+            return true;
+        }
+    }
 
     //pagar
+    public pagar(valor: number, descricao: string): boolean {
+        if (valor <= 0 || valor > this.saldo || !this.status) {
+            console.log("Valor inválido, saldo insuficiente ou conta inativa.");
+            return false;
+        }else {     
+            this.saldo -= valor;
+            const transacao = new Transacao(TipoTransacao.PAGAMENTO, valor, 
+                "-", undefined, descricao);
+            this.transacoes.push(transacao);
+            return true;
+        }
+    }
 
     //imprimir extrato
+    public gerarExtrato(): void {
+        console.log(`\nExtrato da Conta ${this.numero} - Agência ${this.agencia.getNumero()}`);
+        console.log(`Cliente: ${this.cliente.getNome()}`);
+        console.log("Transações:");
+        if (this.transacoes.length === 0) {
+            console.log("Nenhuma transação realizada.");
+        } else {
+            this.transacoes.forEach((transacao, index) => {
+                console.log(`${transacao.toString()}`);
+            });
+        }
+        console.log(`Saldo Atual: R$ ${this.saldo.toFixed(2)} \n`);
+    }
 
 }

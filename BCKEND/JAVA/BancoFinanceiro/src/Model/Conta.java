@@ -36,16 +36,21 @@ public class Conta {
 	
 	//sacar
 	public boolean sacar(double valor) {
-		if (this.saldo >= valor) {
-			this.saldo -= valor; // this.saldo = this.saldo - valor
-			Transacao transacao = new Transacao(TipoTransacao.Saque, 
-					valor, null, '-');
-			this.transacoes.add(transacao);
-			return true;
+		if (valor >= 0) {
+			if (this.saldo >= valor) {
+				this.saldo -= valor; // this.saldo = this.saldo - valor
+				Transacao transacao = new Transacao(TipoTransacao.Saque, 
+						valor, '-');
+				this.transacoes.add(transacao);
+				return true;
+			} else {
+				System.out.println("Saldo insuficiente!");
+				return false;
+			}			
 		} else {
-			System.out.println("Saldo insuficiente!");
+			System.out.println("Valor inválido!");
 			return false;
-		}
+		}		
 	} 
 	
 	//depositar
@@ -53,7 +58,7 @@ public class Conta {
 		if (valor >= 0) {
 			this.saldo += valor;
 			Transacao transacao = new Transacao(TipoTransacao.Depósito, 
-					valor, null, '+');
+					valor, '+');
 			this.transacoes.add(transacao);
 			return true;
 		} else {
@@ -63,10 +68,59 @@ public class Conta {
 	}
 	
 	//transferir
+	public boolean transferir(double valor, Conta contaDestino) {
+		if (valor > 0 && contaDestino != null && contaDestino.status) {
+			if(this.saldo >= valor) {
+				this.saldo -= valor;
+				Transacao transSaida = new Transacao(TipoTransacao.Transferência,
+						valor, contaDestino.cliente, '-');
+				this.transacoes.add(transSaida);
+				contaDestino.saldo += valor;
+				Transacao transDestino = new Transacao(TipoTransacao.Transferência, 
+						valor, this.cliente, '+');
+				contaDestino.transacoes.add(transDestino);
+				return true;
+			} else {
+				System.out.println("Saldo insuficiente!");
+				return false;
+			}
+		} else {
+			System.out.println("Valores inválidos!");
+			return false;
+		}
+	}
 	
 	//pagar
+	public boolean pagar(double valor, String infoPagmento) {
+		if (valor > 0 && infoPagmento != null ) {
+			if (this.saldo >= valor) {
+				this.saldo -= valor;
+				Transacao transacao = new Transacao(TipoTransacao.Pagamento, 
+						valor, infoPagmento, '-');
+				this.transacoes.add(transacao);
+				return true;
+			} else {
+				System.out.println("Saldo insuficiente!");
+				return false;
+			}
+		} else {
+			System.out.println("Valores inválidos!");
+			return false;
+		}
+	}
 	
 	//imprimir extrato
+	public String gerarExtrato() {
+		String extrato = ".:: Extrato da Conta " + this.numero + " ::.\n";
+		extrato += "Cliente: " + this.cliente.getNome() + ", CPF: " + 
+				this.cliente.getCpf() + "\n" + "Agência " + this.ag.getNome()
+				+ ", Nº " + this.getNumero() + "\n";
+		for (Transacao transacao : transacoes) {
+			extrato += transacao + "\n";
+		}
+		extrato += "Salado atual: R$ " + this.saldo;		
+		return extrato;
+	}
 
 	public Agencia getAg() {
 		return ag;
@@ -94,6 +148,10 @@ public class Conta {
 
 	public double getSaldo() {
 		return saldo;
+	}
+	
+	public int getNumero() {
+		return numero;
 	}
 
 	public ArrayList<Transacao> getTransacoes() {

@@ -12,13 +12,15 @@ export class Transacao {
     private valor: number;
     private data: Date;
     private clienteTransferencia?: Cliente;
+    private infoPagamento?: string;
     private tipoValor: string;
 
-    constructor(tipo: TipoTransacao, valor: number, tipoValor: string, clienteTransferencia?: Cliente) {
+    constructor(tipo: TipoTransacao, valor: number, tipoValor: string, clienteTransferencia?: Cliente, infoPagamento?: string) {
         this.tipo = tipo;
         this.valor = valor;
         this.data = new Date();
         if(clienteTransferencia) this.clienteTransferencia = clienteTransferencia;
+        if(infoPagamento) this.infoPagamento = infoPagamento;
         this.tipoValor = tipoValor;
     }
 
@@ -42,10 +44,17 @@ export class Transacao {
         return this.tipoValor;
     }
 
+    public getInfoPagamento(): string | undefined {
+        return this.infoPagamento;
+    }
+
     public toString(): string {
-        let transacaoStr = `Tipo: ${this.tipo}, Valor: ${this.tipoValor} ${this.valor.toFixed(2)}, Data: ${this.data.toLocaleString()}`;
+        let transacaoStr = `Data: ${this.data.toLocaleString()}, Tipo: ${this.tipo}, Valor: ${this.tipoValor} ${this.valor.toFixed(2)}`;
         if (this.clienteTransferencia) {
             transacaoStr += `, Cliente Transferência: ${this.clienteTransferencia.getNome()}`;
+        }
+        if (this.infoPagamento) {
+            transacaoStr += `, Info Pagamento: ${this.infoPagamento}`;
         }
         return transacaoStr;
     }
