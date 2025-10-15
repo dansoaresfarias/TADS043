@@ -5,7 +5,8 @@ import java.util.Date;
 import Model.Agencia;
 import Model.Cliente;
 import Model.Endereco;
-import Model.Conta;
+import Model.ContaCorrente;
+import Model.ContaPoupanca;
 
 public class Principal {
 
@@ -39,8 +40,8 @@ public class Principal {
 				234543, "joazinho.basante@gmail.com", "81978786669",
 				endBasante);
 		
-		Conta contaRenato = new Conta(renato, 123456, agSuassuna);
-		Conta contaBasante = new Conta(basante, 654321, agSuassuna);
+		ContaCorrente contaRenato = new ContaCorrente(renato, 123456, agSuassuna);
+		ContaPoupanca contaBasante = new ContaPoupanca(basante, 654321, agSuassuna);
 		
 		//endRenato.uf = "PE";
 		//endRenato.setUf("PE");

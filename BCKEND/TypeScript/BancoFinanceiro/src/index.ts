@@ -1,7 +1,8 @@
 import { Agencia } from "./Model/Agencia";
 import { Cliente } from "./Model/Cliente";
 import { Endereco } from "./Model/Endereco";
-import { Conta } from "./Model/Conta";
+import { ContaCorrente } from "./Model/ContaCorrente";
+import { ContaPoupanca } from "./Model/ContaPoupanca";
 
 console.log("Banco Financeiro");
 
@@ -31,8 +32,8 @@ const agenciaSuassuna: Agencia = new Agencia("Suassuna", 1234, "(81) 3344-5566",
 
 //console.log(agenciaSuassuna.toString());
 
-const contaRenato: Conta = new Conta(renato, 12345, agenciaSuassuna);
-const contaBasante: Conta = new Conta(basante, 54321, agenciaSuassuna);
+const contaRenato: ContaCorrente = new ContaCorrente(renato, 12345, agenciaSuassuna);
+const contaBasante: ContaPoupanca = new ContaPoupanca(basante, 54321, agenciaSuassuna);
 
 contaRenato.depositar(3500);
 contaRenato.pagar(580, "Faculdade SENAC");
