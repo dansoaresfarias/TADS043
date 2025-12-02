@@ -20,8 +20,11 @@ class ClienteRepository {
         }
     }
 
-    async getClienteByCPF(cpf: string): Promise<Cliente | null> {
+    async getClienteByCPF(cpf: string | undefined): Promise<Cliente | null> {
         try {
+            if (!cpf) {
+                throw new Error("CPF não fornecido");
+            }
             return await this.clienteRepository.findOneBy({ cpf: cpf });
         } catch (error) {
             throw new Error(`Erro ao buscar cliente por CPF: ${error}`);

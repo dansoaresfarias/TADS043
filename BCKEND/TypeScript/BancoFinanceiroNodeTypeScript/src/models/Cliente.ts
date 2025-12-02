@@ -9,10 +9,10 @@ export class Cliente {
     nome: string;
 
     @Column({ type: 'date' })
-    dataNascimento: Date;
+    dataNascimento: string;
 
     @Column({ type: 'int', unique: true })
-    rg: number;
+    rg: string;
 
     @Column({ length: 150, unique: true })
     email: string;
@@ -20,7 +20,7 @@ export class Cliente {
     @Column({ length: 20, unique: true })
     telefone: string;
 
-    constructor(nome: string, cpf: string, dataNascimento: Date, rg: number, email: string, telefone: string) {
+    constructor(nome: string, cpf: string, dataNascimento: string, rg: string, email: string, telefone: string) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
@@ -37,11 +37,11 @@ export class Cliente {
         return this.cpf;
     }
 
-    public getDataNascimento(): Date {
+    public getDataNascimento(): string {
         return this.dataNascimento;
     }
 
-    public getRg(): number {
+    public getRg(): string {
         return this.rg;
     }
 
@@ -68,7 +68,7 @@ export class Cliente {
     public toString(): string {
         return `Nome: ${this.nome}
 CPF: ${this.cpf}
-Data de Nascimento: ${this.dataNascimento.toLocaleDateString('pt-BR')}
+Data de Nascimento: ${this.dataNascimento}
 RG: ${this.rg}
 Email: ${this.email}
 Telefone: ${this.telefone}}`;
