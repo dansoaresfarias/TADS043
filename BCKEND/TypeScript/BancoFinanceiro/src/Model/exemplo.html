@@ -1,0 +1,625 @@
+<div style="position: relative; text-align: center;"><a
+    href="https://ava.ufpe.br/posgraduacao/course/view.php?id=22"
+    target="_blank" rel="noopener"><img
+      class="img-fluid atto_image_button_text-bottom" role="presentation"
+      src="https://ava.ufpe.br/posgraduacao/draftfile.php/2124/user/draft/272019468/EPTD-ArteBloco-v1.png"
+      alt="" width="512" height="512"></a></div>
+<p>
+  <script type="text/javascript">
+    const inViewport = (entries, observer) => {
+      entries.forEach(entry => {
+        entry.target.classList.toggle("is-inViewport", entry
+          .isIntersecting);
+      });
+    };
+
+    const Obs = new IntersectionObserver(inViewport);
+    const
+    obsOptions = {}; //See: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Intersection_observer_options
+
+    // Attach observer to every [data-inviewport] element:
+    const ELs_inViewport = document.querySelectorAll('[data-inviewport]');
+    ELs_inViewport.forEach(EL => {
+      Obs.observe(EL, obsOptions);
+    });
+
+
+    /****************************************
+	
+				ESTILO GERAL
+
+	 ****************************************/
+
+    const styles_GERAL = `
+	
+  	  :root {
+        --eptd_azul: #1B355D;
+        --eptd_azulmedio: #4F6390;
+        --eptd_azulclaro: #E4F0FF;
+        --eptd_bege: #FFEECB;
+        --eptd_branco: #f9f9f9;
+        --eptd_brancobg: #FDFDFD;
+	    --eptd_branco-off: #FAF9F6;
+        --eptd_cinzabg: #F2F3F7;
+	    --eptd_cinzaclaro: #F8F9FA;
+	    --eptd_dourado: #D7A319;
+        --eptd_marrom: #877555;
+        --eptd_preto: #414143;
+        --eptd_verde: #427653;
+      }
+      
+	  .container-fluid {
+	    max-width: 100%;
+	  }
+	
+    `;
+
+
+
+
+
+    /****************************************
+    
+    			ESTILO PARA A SEÇÃO ZERO
+
+     ****************************************/
+
+
+    const styles_SECAOZERO = `
+
+	  /*------------   BANNER   ------------*/
+      
+      #block-region-content .block_html {
+        background-color: var(--eptd_cinzaclaro);
+      }
+      
+      #eptd-banner {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 336px;
+        padding: 24px;
+        border-radius: 8px;
+        max-width: 100%;
+        width: 100%;
+        position: relative !important;
+      }
+    
+      #eptd-banner .category {
+        margin-bottom: 8px;
+      }
+      
+      #eptd-banner .badge {
+        color: var(--primary);
+        padding: 4px 6px;
+        border-radius: 4px;
+        background-color: #fff;
+        font-size: 12px;
+        line-height: 15px;
+        font-weight: 400;
+      }
+      
+      #eptd-banner .header-heading {
+        color: #fff;
+        max-width: 40%;
+      }
+      
+      #eptd-banner .header-sub-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 32px 24px;
+      }
+      
+      #eptd-banner .rating-instructor-wrapper {
+        display: flex;
+        gap: 12px 24px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      
+      #eptd-banner .stat-container {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+        color: #fff;
+      }
+      
+      #eptd-banner .view-user-profile-link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+	  
+	  #eptd-banner .instructor-info .userinitials {
+        width: 80px;
+        height: 80px;
+        font-size: 24px;
+	    border: unset;
+	  }
+	  
+	  #eptd-banner .instructor-info .titles {
+        text-align: center;
+        overflow: hidden;
+        max-height: 2em;
+        line-height: 1;
+        margin-top: 10px;
+	    font-size: 14px;
+	    color: #fff;
+	  }
+	  
+	  #eptd-banner .instructor-info .userpicture {
+	    width: 80px;
+		height: 80px;
+		font-size: 24px;
+		border: unset;
+	  }
+	
+	
+	  /*------------   APRESENTAÇÃO DO PROFESSOR   ------------*/
+      
+      .path-course-view #section-0 li.activity>div {
+        padding: 0;
+      }
+      
+      #section-0 .label .label_content .no-overflow {
+        overflow: hidden;
+      }
+      
+      .format-tiles .course-content #section-0 .section .activity:hover {
+        background-color: transparent !important;
+      }
+      
+      #partial_collapse {
+        width: 100%;
+      }
+      
+      #partial_collapse [role="button"]:focus {
+        box-shadow: none;
+      }
+      
+      #partial_collapse div.collapse.show {
+        display: block;
+        height: auto !important;
+        border-bottom: none !important;
+      }
+      
+      #section-0 .collapse:not(.show) {
+        -webkit-mask-image: linear-gradient(180deg, #D9D9D9 51.56%, #fff0 120%);
+      }
+
+      #partial_collapse div.collapse[aria-expanded="false"] {
+        display: block;
+        height: 300px;//calc(50px + 1.5625vw);//40px;
+        overflow: hidden;
+        border-bottom: none !important;
+      }
+
+      #partial_collapse div.collapsing[aria-expanded="false"] {
+        height: 300px;//calc(50px + 1.5625vw) !important;//40px !important;
+      }
+	  
+      #partial_collapse a.collapsed:after  {
+        content: '+ Mostrar Mais';
+        color: var(--eptd_azul);
+        background: var(--eptd_azulclaro);
+      	border-radius: 0 0 7px 7px;
+      	padding: 2px 5px;
+      }
+	  
+      #partial_collapse a:not(.collapsed):after {
+        content: '- Mostrar Menos';
+        color: var(--eptd_azul);
+        background: var(--eptd_azulclaro);
+      	border-radius: 0 0 7px 7px;
+      	padding: 2px 5px;
+      }
+
+
+      /*------------   ICONES DOS RECURSOS DA SEÇÃO ZERO   ------------*/
+      
+      .activityiconcontainer.collaboration:not(.isbranded) .activityicon:not(.nofilter), .activityiconcontainer.collaboration:not(.isbranded) .icon:not(.nofilter), .activityiconcontainer.content:not(.isbranded) .icon:not(.nofilter), .activityiconcontainer.assessment:not(.isbranded) .icon:not(.nofilter) {
+        filter: none;
+      }
+      
+      .format-tiles .course-content #section-0 li.activity.subtile {
+        background-color: transparent;
+        box-shadow: none;
+        border-top: none;
+        height: 190px;
+        flex-basis: auto;
+      }
+      
+      .format-tiles #section-0 li.subtile .tileiconcontainer.other, .format-tiles #section-0 li.subtile .tileiconcontainer {
+        background-color: var(--eptd_azulclaro);
+        border: none;
+        box-shadow: 2px 4px 5px 0 #bdbdbd;
+      }
+      
+      [data-title="Avisos"] .icon {
+      	content: url(/img/eptd/avisos.png) !important;
+      }
+      
+      [data-title="Guia da Disciplina"] .icon {
+      	content: url(/img/eptd/livro-guia.png) !important;
+      }
+      
+      [data-title="Aulas Telepresenciais"] .icon {
+      	content: url(/img/eptd/webinar.png) !important;
+      }
+      
+      [data-title="Sobre o(a) Professor(a)"] .icon, [data-title*="Sobre o Professor"] .icon, [data-title*="Sobre a Professora"] .icon {
+      	content: url(/img/eptd/biografia.png) !important;
+      }
+	  
+	`;
+
+
+
+    /****************************************
+    
+    		ESTILO PARA A SEÇÃO DOS CARDS
+
+     ****************************************/
+
+    const styles_CARDS = `
+        
+      /*------------   ALINHAMENTO DOS CARDS   ------------*/
+      
+      .format-tiles .course-content ul.tiles .tile.spacer, .format-tiles.pagelayout-course .course-content li.section ul li.activity.spacer {
+        display: none;
+      }
+      
+      .format-tiles ul.tiles#multi_section_tiles, .format-tiles .course-content li.section ul.format-tiles-cm-list {
+        justify-content: center;
+      }
+
+
+      
+      /*------------   TÍTULO DOS CARDS   ------------*/
+      
+  		.format-tiles .course-content ul.tiles .tile.phototile.tilestyle-2 .photo-tile-text {
+        position: absolute;
+        top: auto;
+        bottom: 10px;
+        width: calc(100% - 10px);
+        text-align: left;
+      }
+      
+      .format-tiles .course-content ul.tiles .tile.phototile.tilestyle-2 .photo-tile-text h3 {
+        line-height: 30.5px;
+        padding: 4px 7px;
+        background-color: var(--eptd_branco) !important;
+        color: var(--eptd_azul) !important;
+        font-weight: bold;
+        display: inline;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: .5rem;
+      }
+
+  `;
+
+
+
+    /****************************************
+    
+    			ESTILO PARA OS ICONES DAS FERRAMENTAS
+
+     ****************************************/
+
+    const styles_ICONES = `
+
+      .format-tiles .course-content .section li.activity.subtile {
+        background-color: var(--eptd_azulclaro);
+      }
+      
+      .format-tiles .course-content .section li.subtile .tileiconcontainer, .format-tiles .course-content .section li.subtile .tileiconcontainer.content, .format-tiles .course-content .section li.subtile .activityname, .format-tiles .course-content .section li.subtile .tileiconcontainer.collaboration, .format-tiles .course-content .section li.subtile .tileiconcontainer.assessment {
+        border: none;
+        background-color: transparent;
+      }
+    
+      .format-tiles li.activity.modtype_folder .tileiconcontainer .tile-icon .icon {
+        content: url(/img/eptd/caixa-de-entrada.png);
+	  }
+      
+      .format-tiles li.activity.subtile.modtype_subcourse .activityiconcontainer .icon {
+        content: url(/img/eptd/peca-de-quebra-cabecas.png);
+      }
+
+      .format-tiles li.activity.subtile.modtype_resource.resourcetype_pdf .activityiconcontainer .icon {
+        content: url(/img/eptd/arquivo_pdf.png);
+      }
+      
+      .format-tiles li.activity.subtile.modtype_resource.resourcetype_spreadsheet .activityiconcontainer .icon {
+        content: url(/img/eptd/arquivo_xls.png);
+      }
+      
+      .format-tiles li.activity.subtile.modtype_resource.resourcetype_document .activityiconcontainer .icon {
+        content: url(/img/eptd/arquivo_doc.png);
+      }
+	  
+	  .format-tiles li.activity.modtype_forum .tileiconcontainer .tile-icon .icon {
+        content: url(/img/eptd/mensagens.png);
+	  }
+	  
+	  .format-tiles li.activity.modtype_assign .tileiconcontainer .tile-icon .icon {
+        content: url(/img/eptd/envio-documento.png);
+	  }
+	  
+	  .format-tiles li.activity.modtype_url .tileiconcontainer .tile-icon .icon {
+        content: url(/img/eptd/portal-internet.png);
+	  }
+	  
+	  .format-tiles li[data-title*="Aula 0"].activity.modtype_url .tile-icon .icon, .format-tiles li[data-title*="Aula 1"].activity.modtype_url .tile-icon .icon {
+      	content: url(/img/eptd/reprodutor-de-video.png) !important;
+      }
+	  
+	  [data-title*="VIDEO"] .tile-icon .icon {
+      	content: url(/img/eptd/reprodutor-de-video.png) !important;
+      }
+	  
+	  [data-title*="Slides de Aula"] .tile-icon .icon {
+      	content: url(/img/eptd/projetor-de-video.png) !important;
+      }
+      
+      [data-title*="AVALIAÇÃO"] .tile-icon .icon {
+      	content: url(/img/eptd/avaliacao_2.png) !important;
+      }
+      
+      [data-title*="Calendário"] .tile-icon .icon {
+      	content: url(/img/eptd/calendario.png) !important;
+      }
+      
+      [data-title*="O que você achou do Módulo"] .tile-icon .icon {
+        content: url(/img/eptd/opiniao.png) !important;
+        filter: none !important;
+      }
+      
+  `;
+
+
+
+    /****************************************
+      
+      			ESTILO PARA AS SEÇÕES
+
+    ****************************************/
+
+    const styles_SECOES = `
+      
+      .format-tiles li.section .summary .no-overflow {
+        padding: calc(.5em + 10px);
+      }
+	  
+	  .activity.fullwidth.label {
+	    border: none !important;
+	  }
+	  
+	  .eptd-section_separator h3 {
+      	text-align:center;
+        color: var(--eptd_azul) !important;
+        padding-top: 2em !important;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        grid-template-rows: 16px 0;
+        grid-gap: 22px;
+      }
+      
+      .eptd-section_separator h3:after,.eptd-section_separator h3:before {
+      	content: " ";
+        display: block;
+        border-bottom: 3px solid var(--eptd_azul);
+	  }
+	  
+	`;
+
+
+
+    /****************************************
+    
+    			ESTILO PARA O LIVRO
+
+    ****************************************/
+
+    const styles_LIVRO = `
+    
+	  /*------------   CAPA DO LIVRO   ------------*/
+	
+      .eptd-book_cover {
+      	padding-top: calc(50px + 1.5625vw);
+        padding-left: 10%;
+        padding-right: 6%;
+        padding-bottom: calc(50px + 1.5625vw);
+        background: var(--eptd_azul);
+        border-radius: 7px;
+        margin-bottom: 2em;
+		max-width: 100%;
+      }
+	  
+	  .book_content .eptd-book_cover h4 {
+		color: var(--eptd_branco) !important;
+	  }
+	  
+	/*------------   NAVEGAÇÃO   ------------*/
+ 
+		.navtop, .navbottom {
+    	padding-left: 3em;
+      padding-right: 3em;
+    }
+		
+    .booknext, .bookprev {
+      background-color: var(--eptd_azulclaro) !important;
+      color: #455a64 !important;
+      margin-bottom: 3px;
+      border-radius: 7px;
+    }
+    
+    .path-mod-book #mod_book-chaptersnavigation {
+      top: calc(50% - 25px);
+      margin-bottom: 50px;
+    }
+    
+		.book_content .no-overflow {
+      min-height: 700px;
+			padding: 5em 20px;
+      max-width: 980px;
+      margin: 0 auto;
+		}
+	   
+		.book_content h3 {
+    	color: var(--eptd_azul) !important;
+			margin-bottom: 10%;
+			font-weight: 600 !important;
+      font-size:calc(1.044375rem + 1.7325vw) !important;
+		}
+		
+		.book_content h4 {
+    	color: var(--eptd_azul) !important;
+			margin-bottom: 1.5em;
+			margin-top: 2em;
+      font-weight: 500 !important;
+      font-size:calc(0.9975rem + 1.17vw) !important;
+		}
+		
+		
+		
+		.book_content h5 {
+    	color: #005A8D !important;
+			margin-top: 5%;
+      font-weight: 400 !important;
+		}
+    
+      .book_content p {
+	    text-indent: 1.5em;
+        margin-bottom: 1.2em;
+        line-height: 1.6;
+        font-size: large !important;
+	  }
+    
+    .book_content ul, .book_content ol {
+    	line-height: 1.5;
+      margin-left: 2em;
+      margin-bottom: 1rem;
+    }
+    
+    .book_content ul li, .book_content ol li {
+			font-size: large !important;
+    }
+    
+    .book_content body {
+    	font-size: large !important;
+    }
+    
+    .book_content .eptd-destaque {
+    	background-color: #007C59;
+      color: #FAF9F6;
+      border-radius: .5rem;
+      margin-top: 2rem; margin-bottom: 2rem; padding: 2em;
+    }
+    
+    .book_content .figure-img {
+    	border: 1px solid #ddd;
+      border-radius: .5rem;
+      padding: 2em;
+    }
+    
+    .book_content .figure {
+    	margin-left: auto !important;
+      margin-right: auto !important;
+      display: block !important;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+	
+    `;
+
+
+
+    /****************************************
+      
+      			ESTILO PARA A TAREFA
+
+    ****************************************/
+
+    const styles_TAREFA = `
+	
+	  .path-mod .activity-information .completion-info {
+	    border: none;
+	  }
+	
+	  .path-mod .activity-information .activity-dates {
+	    background-color: #fff3cd;
+		padding-left: 1rem;
+		border: none;
+		border-radius: .5rem;
+	  }
+
+    #intro .no-overflow {
+      padding: 10% 20px;
+    	max-width: 940px;
+    	margin: 0 auto;
+    }
+    
+    #intro .no-overflow h3 {
+    	font-weight: 600;
+      font-size:calc(1.044375rem + 1.7325vw) !important;
+      margin-bottom: 10%;
+    }
+    
+    `;
+
+
+
+    /****************************************
+    
+    			ESTILO PARA A PÁGINA
+
+    ****************************************/
+
+    const styles_PAGINA = `
+  
+      .format-tiles .embed_cm_modal.mod_page .modal-body .no-overflow {
+      	max-width: 900px;
+      	margin: 0 auto;
+      }
+	
+	  .mod_page .btn.disabled, .mod_page.btn:disabled {
+        opacity: .25;
+	  }
+	  
+    `;
+
+
+
+    let stylesSheetGeral = document.createElement("style")
+    let stylesSheetSecaoZero = document.createElement("style")
+    let stylesSheetCards = document.createElement("style")
+    let stylesSheetIcones = document.createElement("style")
+    let stylesSheetSecoes = document.createElement("style")
+    let stylesSheetLivro = document.createElement("style")
+    let stylesSheetTarefa = document.createElement("style")
+    let stylesSheetPagina = document.createElement("style")
+
+    stylesSheetGeral.innerText = styles_GERAL;
+    stylesSheetSecaoZero.innerText = styles_SECAOZERO;
+    stylesSheetCards.innerText = styles_CARDS;
+    stylesSheetIcones.innerText = styles_ICONES;
+    stylesSheetSecoes.innerText = styles_SECOES;
+    stylesSheetLivro.innerText = styles_LIVRO;
+    stylesSheetTarefa.innerText = styles_TAREFA;
+    stylesSheetPagina.innerText = styles_PAGINA;
+
+    document.head.appendChild(stylesSheetGeral);
+    document.head.appendChild(stylesSheetSecaoZero);
+    document.head.appendChild(stylesSheetCards);
+    document.head.appendChild(stylesSheetIcones);
+    document.head.appendChild(stylesSheetSecoes);
+    document.head.appendChild(stylesSheetLivro);
+    document.head.appendChild(stylesSheetTarefa);
+    document.head.appendChild(stylesSheetPagina);
+  </script>
+</p>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="moodle-profile-container" style="max-width: 900px !important; margin: 0 auto !important; background: #ffffff !important; border-radius: 12px !important; box-shadow: 0 10px 25px rgba(16, 42, 67, 0.08) !important; overflow: hidden !important; border-top: 6px solid #f37021 !important; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; color: #334e68 !important; line-height: 1.6 !important;">
+    
+    <!-- CABEÇALHO DA APRESENTAÇÃO -->
+    <header class="profile-header" style="background: linear-gradient(135deg, #0d233a, #005691) !important; padding: 40px 30px !important; color: #ffffff !important; display: flex !important; align-items: center !important; gap: 30px !important; flex-wrap: wrap !important;">
+        <div class="avatar-container" style="position: relative !important; width: 140px !important; height: 140px !important; border-radius: 50% !important; border: 4px solid rgba(255, 255, 255, 0.2) !important; background: rgba(255, 255, 255, 0.1) !important; display: flex !important; align-items: center !important; justify-content: center !important; overflow: hidden !important; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important; flex-shrink: 0 !important;">
+            <svg class="avatar-placeholder" viewBox="0 0 24 24" style="width: 100% !important; height: 100% !important; fill: #ffffff !important; opacity: 0.9 !important; padding: 20px !important;">
+                <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+            </svg>
+        </div>
+        <div class="header-info" style="flex: 1 !important; min-width: 250px !important;">
+            <h1 style="font-size: 24pt !important; font-weight: 700 !important; margin: 0 0 5px 0 !important; color: #ffffff !important; letter-spacing: -0.5px !important; line-height: 1.2 !important;">Danilo Farias Soares da Silva</h1>
+            <div class="subtitle" style="font-size: 13pt !important; color: #e2e8f0 !important; margin: 0 0 15px 0 !important; font-weight: 300 !important;">Especialista em Modelagem de Dados & Docente de Ensino Superior</div>
+            
+            <!-- LINKS PARA CURRÍCULO E REDES -->
+            <div class="social-links" style="display: flex !important; gap: 12px !important; flex-wrap: wrap !important;">
+                <a href="http://lattes.cnpq.br/5345085293597975" target="_blank" style="display: inline-flex !important; align-items: center !important; gap: 8px !important; padding: 8px 16px !important; border-radius: 20px !important; font-size: 10pt !important; font-weight: 600 !important; text-decoration: none !important; color: #ffffff !important; background: rgba(255, 255, 255, 0.15) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; transition: all 0.3s ease !important;">
+                    📄 Currículo Lattes
+                </a>
+                <a href="https://www.linkedin.com/in/dansoaresfarias/" target="_blank" style="display: inline-flex !important; align-items: center !important; gap: 8px !important; padding: 8px 16px !important; border-radius: 20px !important; font-size: 10pt !important; font-weight: 600 !important; text-decoration: none !important; color: #ffffff !important; background: rgba(255, 255, 255, 0.15) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; transition: all 0.3s ease !important;">
+                    🔗 LinkedIn
+                </a>
+                <a href="https://github.com/dansoaresfarias/" target="_blank" style="display: inline-flex !important; align-items: center !important; gap: 8px !important; padding: 8px 16px !important; border-radius: 20px !important; font-size: 10pt !important; font-weight: 600 !important; text-decoration: none !important; color: #ffffff !important; background: rgba(255, 255, 255, 0.15) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; transition: all 0.3s ease !important;">
+                    💻 GitHub
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVEGAÇÃO POR ABAS -->
+    <nav class="profile-nav" style="display: flex !important; background: #f0f4f8 !important; border-bottom: 1px solid #d9e2ec !important; flex-wrap: wrap !important;">
+        <button class="d-nav-tab btn-tab-sobre" onclick="moodleSwitchTab(this, 0)" style="flex: 1 !important; min-width: 120px !important; padding: 15px 20px !important; text-align: center !important; background: #ffffff !important; border: none !important; font-size: 11pt !important; font-weight: 600 !important; color: #0d233a !important; cursor: pointer !important; border-bottom: 3px solid #f37021 !important; outline: none !important;">Sobre Mim</button>
+        <button class="d-nav-tab btn-tab-formacao" onclick="moodleSwitchTab(this, 1)" style="flex: 1 !important; min-width: 120px !important; padding: 15px 20px !important; text-align: center !important; background: none !important; border: none !important; font-size: 11pt !important; font-weight: 600 !important; color: #334e68 !important; cursor: pointer !important; border-bottom: 3px solid transparent !important; outline: none !important;">Formação Acadêmica</button>
+        <button class="d-nav-tab btn-tab-docencia" onclick="moodleSwitchTab(this, 2)" style="flex: 1 !important; min-width: 120px !important; padding: 15px 20px !important; text-align: center !important; background: none !important; border: none !important; font-size: 11pt !important; font-weight: 600 !important; color: #334e68 !important; cursor: pointer !important; border-bottom: 3px solid transparent !important; outline: none !important;">Experiência Docente</button>
+    </nav>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="content-container" style="padding: 35px !important; background: #ffffff !important;">
+        
+        <!-- ABA 0: SOBRE MIM -->
+        <div class="d-tab-panel panel-sobre" style="display: block !important;">
+            <h2 style="font-size: 16pt !important; color: #102a43 !important; margin: 0 0 20px 0 !important; font-weight: 700 !important; border-bottom: 2px solid #e1e8ed !important; padding-bottom: 8px !important;">Apresentação Profissional</h2>
+            <p style="margin: 0 0 15px 0 !important; font-size: 11pt !important; text-align: justify !important; color: #334e68 !important; line-height: 1.6 !important;">Sou mestre e doutorando em Ciência da Computação pela UFPE, com sólida trajetória voltada à arquitetura de dados, engenharia de software e inovação educacional. Unindo uma forte bagagem técnica a mais de uma década de dedicação ao Ensino Superior e à Educação a Distância (EaD), tenho focado minha atuação na criação de metodologias e soluções que preparam profissionais de alta performance para o mercado tecnológico.</p>
+            <p style="margin: 0 0 15px 0 !important; font-size: 11pt !important; text-align: justify !important; color: #334e68 !important; line-height: 1.6 !important;">Minha experiência engloba desde a regência de disciplinas complexas de computação e banco de dados até o design instrucional e produção autoral de materiais didáticos institucionais. Utilizo frameworks ágeis e metodologias ativas para construir trilhas de aprendizagem eficientes, didáticas e rigorosamente alinhadas às reais demandas organizacionais.</p>
+        </div>
+
+        <!-- ABA 1: FORMAÇÃO -->
+        <div class="d-tab-panel panel-formacao" style="display: none !important;">
+            <h2 style="font-size: 16pt !important; color: #102a43 !important; margin: 0 0 20px 0 !important; font-weight: 700 !important; border-bottom: 2px solid #e1e8ed !important; padding-bottom: 8px !important;">Formações Acadêmicas</h2>
+            <div class="formation-list" style="display: flex !important; flex-direction: column !important; gap: 15px !important;">
+                <div class="formation-item" style="padding: 15px 20px !important; background: #f8fafc !important; border-left: 4px solid #005691 !important; border-radius: 0 12px 12px 0 !important;">
+                    <div class="formation-title" style="font-weight: 700 !important; color: #102a43 !important; font-size: 11pt !important;">Doutorado em Ciência da Computação (em andamento)</div>
+                    <div class="formation-institution" style="font-size: 10pt !important; color: #f37021 !important; font-weight: 600 !important; margin-top: 2px !important;">Universidade Federal de Pernambuco (UFPE)</div>
+                </div>
+                <div class="formation-item" style="padding: 15px 20px !important; background: #f8fafc !important; border-left: 4px solid #005691 !important; border-radius: 0 12px 12px 0 !important;">
+                    <div class="formation-title" style="font-weight: 700 !important; color: #102a43 !important; font-size: 11pt !important;">Mestrado em Ciência da Computação</div>
+                    <div class="formation-institution" style="font-size: 10pt !important; color: #f37021 !important; font-weight: 600 !important; margin-top: 2px !important;">Universidade Federal de Pernambuco (UFPE)</div>
+                </div>
+                <div class="formation-item" style="padding: 15px 20px !important; background: #f8fafc !important; border-left: 4px solid #005691 !important; border-radius: 0 12px 12px 0 !important;">
+                    <div class="formation-title" style="font-weight: 700 !important; color: #102a43 !important; font-size: 11pt !important;">Especialização em Informática em Saúde</div>
+                    <div class="formation-institution" style="font-size: 10pt !important; color: #f37021 !important; font-weight: 600 !important; margin-top: 2px !important;">Universidade Federal de São Paulo (UNIFESP)</div>
+                </div>
+                <div class="formation-item" style="padding: 15px 20px !important; background: #f8fafc !important; border-left: 4px solid #005691 !important; border-radius: 0 12px 12px 0 !important;">
+                    <div class="formation-title" style="font-weight: 700 !important; color: #102a43 !important; font-size: 11pt !important;">Especialização em Business Intelligence</div>
+                    <div class="formation-institution" style="font-size: 10pt !important; color: #f37021 !important; font-weight: 600 !important; margin-top: 2px !important;">Faculdade São Miguel (FAFIRE)</div>
+                </div>
+                <div class="formation-item" style="padding: 15px 20px !important; background: #f8fafc !important; border-left: 4px solid #005691 !important; border-radius: 0 12px 12px 0 !important;">
+                    <div class="formation-title" style="font-weight: 700 !important; color: #102a43 !important; font-size: 11pt !important;">Tecnólogo em Análise e Desenvolvimento de Sistemas</div>
+                    <div class="formation-institution" style="font-size: 10pt !important; color: #f37021 !important; font-weight: 600 !important; margin-top: 2px !important;">Instituto Federal de Pernambuco (IFPE)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABA 2: EXPERIÊNCIA DOCENTE -->
+        <div class="d-tab-panel panel-docencia" style="display: none !important;">
+            <h2 style="font-size: 16pt !important; color: #102a43 !important; margin: 0 0 20px 0 !important; font-weight: 700 !important; border-bottom: 2px solid #e1e8ed !important; padding-bottom: 8px !important;">Trajetória e Atuação Docente</h2>
+            <p style="margin: 0 0 15px 0 !important; font-size: 11pt !important; text-align: justify !important; color: #334e68 !important; line-height: 1.6 !important;">Com vasta dedicação ao ecossistema do Ensino Superior e EaD, acumulo passagens consistentes por instituições de excelência em Pernambuco, como a <strong>Faculdade SENAC Pernambuco</strong>, o <strong>IFPE Campus Recife</strong>, a <strong>Faculdade São Miguel</strong> e a <strong>Secretaria de Programas de Educação Aberta e Digital (SPREAD/UFPE)</strong>.</p>
+            <p style="margin: 0 0 15px 0 !important; font-size: 11pt !important; text-align: justify !important; color: #334e68 !important; line-height: 1.6 !important;">Minha prática pedagógica é focada em conectar teoria e prática de mercado através de abordagens ativas, como o <em>Problem-Based Learning</em> (PBL) e a Sala de Aula Invertida. Destaco uma consolidada atuação no ensino avançado de infraestrutura de dados em diferentes níveis, assumindo a regência de disciplinas chaves como <strong>Banco de Dados, SGBD, Linguagem de Definição de Dados, Modelagem Multidimensional</strong> e <strong>Modelagem de Processos de Negócio (BPM)</strong>.</p>
+            <p style="margin: 0 0 15px 0 !important; font-size: 11pt !important; text-align: justify !important; color: #334e68 !important; line-height: 1.6 !important;">Ademais, possuo experiência na liderança de Projetos Integradores corporativos, desenvolvimento de arquiteturas Back-End, e no ciclo completo de engenharia de conteúdos instrucionais — abrangendo escrita autoral, validação técnica e gestão de roteiros educacionais dentro do Ambiente Virtual de Aprendizagem (Moodle).</p>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function moodleSwitchTab(element, index) {
+        // Find the wrapper container to ensure we stay local and don't clash with Moodle elements
+        var container = element.closest('.moodle-profile-container');
+        if (!container) return;
+        
+        // Target buttons and panels strictly inside this single instance
+        var tabs = container.querySelectorAll('.d-nav-tab');
+        var panels = container.querySelectorAll('.d-tab-panel');
+        
+        // Reset all tabs within this container
+        tabs.forEach(function(tab) {
+            tab.style.setProperty('background', 'none', 'important');
+            tab.style.setProperty('color', '#334e68', 'important');
+            tab.style.setProperty('border-bottom', '3px solid transparent', 'important');
+        });
+        
+        // Reset all panels within this container
+        panels.forEach(function(panel) {
+            panel.style.setProperty('display', 'none', 'important');
+        });
+        
+        // Active selected tab style adjustments
+        element.style.setProperty('background', '#ffffff', 'important');
+        element.style.setProperty('color', '#0d233a', 'important');
+        element.style.setProperty('border-bottom', '3px solid #f37021', 'important');
+        
+        // Show corresponding panel securely
+        if(panels[index]) {
+            panels[index].style.setProperty('display', 'block', 'important');
+        }
+    }
+</script>
+</body>
+</html>

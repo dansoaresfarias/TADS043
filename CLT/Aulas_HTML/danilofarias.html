@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação Profissional - Danilo Farias</title>
+    <style>
+        :root {
+            --primary-color: #0d233a; /* Azul Marinho Aponti */
+            --secondary-color: #005691; /* Azul Secundário */
+            --accent-color: #f37021; /* Laranja de Destaque Aponti */
+            --bg-color: #f7f9fc;
+            --card-bg: #ffffff;
+            --text-color: #334e68;
+            --text-dark: #102a43;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .moodle-profile-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 25px rgba(16, 42, 67, 0.08);
+            overflow: hidden;
+            border-top: 6px solid var(--accent-color);
+        }
+
+        /* Header Section */
+        .profile-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 40px 30px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            position: relative;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        /* SVG Placeholder for User Icon since no physical file binary was extracted */
+        .avatar-placeholder {
+            width: 100%;
+            height: 100%;
+            fill: #ffffff;
+            opacity: 0.9;
+            padding: 20px;
+        }
+
+        .header-info h1 {
+            font-size: 24pt;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
+        }
+
+        .header-info .subtitle {
+            font-size: 13pt;
+            color: #e2e8f0;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        /* Social Badges */
+        .social-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-social {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 10pt;
+            font-weight: 600;
+            text-decoration: none;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-social:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(243, 112, 33, 0.3);
+        }
+
+        /* Navigation Tabs */
+        .profile-nav {
+            display: flex;
+            background: #f0f4f8;
+            border-bottom: 1px solid #d9e2ec;
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 15px 20px;
+            text-align: center;
+            background: none;
+            border: none;
+            font-size: 11pt;
+            font-weight: 600;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-tab:hover {
+            color: var(--secondary-color);
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .nav-tab.active {
+            color: var(--primary-color);
+            background: var(--card-bg);
+            border-bottom-color: var(--accent-color);
+        }
+
+        /* Content Sections */
+        .content-container {
+            padding: 35px;
+        }
+
+        .tab-panel {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 16pt;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: #e1e8ed;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 11pt;
+            text-align: justify;
+        }
+
+        /* Timeline / Lists styling */
+        .formation-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .formation-item {
+            padding: 15px 20px;
+            background: #f8fafc;
+            border-left: 4px solid var(--secondary-color);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            transition: var(--transition);
+        }
+
+        .formation-item:hover {
+            transform: translateX(5px);
+            background: #f1f5f9;
+        }
+
+        .formation-title {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 11pt;
+        }
+
+        .formation-institution {
+            font-size: 10pt;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            .social-links {
+                justify-content: center;
+            }
+            .profile-nav {
+                flex-direction: column;
+            }
+            .nav-tab {
+                border-bottom: none;
+                border-left: 3px solid transparent;
+                text-align: left;
+                padding: 12px 20px;
+            }
+            .nav-tab.active {
+                border-left-color: var(--accent-color);
+            }
+            .content-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="moodle-profile-container">
+    <!-- CABEÇALHO DA APRESENTAÇÃO -->
+    <header class="profile-header">
+        <div class="avatar-container">
+            <!-- SVG elegante atuando como placeholder estruturado pronto para receber a foto -->
+            <svg class="avatar-placeholder" viewBox="0 0 24 24">
+                <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+            </svg>
+        </div>
+        <div class="header-info">
+            <h1>Danilo Farias Soares da Silva</h1>
+            <div class="subtitle">Especialista em Modelagem de Dados & Docente de Ensino Superior</div>
+            
+            <!-- LINKS PARA CURRÍCULO E REDES -->
+            <div class="social-links">
+                <a href="http://lattes.cnpq.br/5345085293597975" target="_blank" class="btn-social" title="Currículo Lattes">
+                    <span>📄</span> Currículo Lattes
+                </a>
+                <a href="https://www.linkedin.com/in/dansoaresfarias/" target="_blank" class="btn-social" title="LinkedIn">
+                    <span>🔗</span> LinkedIn
+                </a>
+                <a href="https://github.com/dansoaresfarias/" target="_blank" class="btn-social" title="GitHub">
+                    <span>💻</span> GitHub
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVEGAÇÃO POR ABAS (IDEAL PARA O MOODLE) -->
+    <nav class="profile-nav">
+        <button class="nav-tab active" onclick="switchTab(event, 'sobre')">Sobre Mim</button>
+        <button class="nav-tab" onclick="switchTab(event, 'formacao')">Formação Acadêmica</button>
+        <button class="nav-tab" onclick="switchTab(event, 'docencia')">Experiência Docente</button>
+    </nav>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="content-container">
+        
+        <!-- ABA: SOBRE MIM -->
+        <div id="sobre" class="tab-panel active">
+            <h2>Apresentação Profissional</h2>
+            <p>Sou mestre e doutorando em Ciência da Computação pela UFPE, com sólida trajetória voltada à arquitetura de dados, engenharia de software e inovação educacional. Unindo uma forte bagagem técnica a mais de uma década de dedicação ao Ensino Superior e à Educação a Distância (EaD), tenho focado minha atuação na criação de metodologias e soluções que preparam profissionais de alta performance para o mercado tecnológico.</p>
+            <p>Minha experiência engloba desde a regência de disciplinas complexas de computação e banco de dados até o design instrucional e produção autoral de materiais didáticos institucionais. Utilizo frameworks ágeis e metodologias ativas para construir trilhas de aprendizagem eficientes, didáticas e rigorosamente alinhadas às reais demandas organizacionais.</p>
+        </div>
+
+        <!-- ABA: FORMAÇÃO -->
+        <div id="formacao" class="tab-panel">
+            <h2>Formações Acadêmicas</h2>
+            <div class="formation-list">
+                <div class="formation-item">
+                    <div class="formation-title">Doutorado em Ciência da Computação (em andamento)</div>
+                    <div class="formation-institution">Universidade Federal de Pernambuco (UFPE)</div>
+                </div>
+                <div class="formation-item">
+                    <div class="formation-title">Mestrado em Ciência da Computação</div>
+                    <div class="formation-institution">Universidade Federal de Pernambuco (UFPE)</div>
+                </div>
+                <div class="formation-item">
+                    <div class="formation-title">Especialização em Informática em Saúde</div>
+                    <div class="formation-institution">Universidade Federal de São Paulo (UNIFESP)</div>
+                </div>
+                <div class="formation-item">
+                    <div class="formation-title">Especialização em Business Intelligence</div>
+                    <div class="formation-institution">Faculdade São Miguel (FAFIRE)</div>
+                </div>
+                <div class="formation-item">
+                    <div class="formation-title">Tecnólogo em Análise e Desenvolvimento de Sistemas</div>
+                    <div class="formation-institution">Instituto Federal de Pernambuco (IFPE)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABA: EXPERIÊNCIA DOCENTE -->
+        <div id="docencia" class="tab-panel">
+            <h2>Trajetória e Atuação Docente</h2>
+            <p>Com vasta dedicação ao ecossistema do Ensino Superior e EaD, acumulo passagens consistentes por instituições de excelência em Pernambuco, como a <strong>Faculdade SENAC Pernambuco</strong>, o <strong>IFPE Campus Recife</strong>, a <strong>Faculdade São Miguel</strong> e a <strong>Secretaria de Programas de Educação Aberta e Digital (SPREAD/UFPE)</strong>.</p>
+            
+            <p>Minha prática pedagógica é focada em conectar teoria e prática de mercado através de abordagens ativas, como o <em>Problem-Based Learning</em> (PBL) e a Sala de Aula Invertida. Destaco uma consolidada atuação no ensino avançado de infraestrutura de dados em diferentes níveis, assumindo a regência de disciplinas chaves como <strong>Banco de Dados, SGBD, Linguagem de Definição de Dados, Modelagem Multidimensional</strong> e <strong>Modelagem de Processos de Negócio (BPM)</strong>.</p>
+            
+            <p>Ademais, possuo experiência na liderança de Projetos Integradores corporativos, desenvolvimento de arquiteturas Back-End, e no ciclo completo de engenharia de conteúdos instrucionais — abrangendo escrita autoral, validação técnica e gestão de roteiros educacionais dentro do Ambiente Virtual de Aprendizagem (Moodle).</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- LÓGICA DE INTERAÇÃO VIA JAVASCRIPT -->
+<script>
+    function switchTab(event, tabId) {
+        // Remove a classe ativa de todos os botões de aba
+        const tabs = document.querySelectorAll('.nav-tab');
+        tabs.forEach(tab => tab.classList.remove('active'));
+
+        // Remove a classe ativa de todos os painéis de conteúdo
+        const panels = document.querySelectorAll('.tab-panel');
+        panels.forEach(panel => panel.classList.remove('active'));
+
+        // Adiciona a classe ativa na aba clicada e no respectivo painel
+        event.currentTarget.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+    }
+</script>
+
+</body>
+</html>
